@@ -28,8 +28,10 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 80%; /* Set width to use percentage for responsive design */
-            max-width: 800px; /* Max width for large screens */
+            width: 100%; /* 或你之前设置的宽度 */
+            max-width: 600px; /* 或你之前设置的最大宽度 */
+            max-height: 300px; /* 设置最大高度 */
+            overflow-y: auto; /* 超出最大高度时显示滚动条 */
         }
 
         #codeEditor {
@@ -38,8 +40,8 @@
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            width: 80%; /* Set width to use percentage for responsive design */
-            max-width: 800px; /* Max width for large screens */
+            width: 80%;
+            max-width: 800px;
         }
 
         textarea {
@@ -65,7 +67,7 @@
         button {
             padding: 10px 20px;
             border: none;
-            border-radius: 20px; /* Rounded corners for buttons */
+            border-radius: 20px;
             cursor: pointer;
             font-size: 14px;
             transition: background-color 0.3s ease-in-out;
@@ -77,7 +79,7 @@
             top: 10px;
             left: 20px;
             padding: 10px;
-            background-color: #4CAF50;
+            background-color: #900909;
             color: white;
             border-radius: 4px;
             cursor: pointer;
@@ -97,7 +99,7 @@
             max-height: 300px;
             border-radius: 4px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            display: none; /* Hide by default */
+            display: none;
         }
 
         .question-item {
@@ -131,12 +133,12 @@
         }
 
         #accountButton {
-            background-color: #4CAF50;
+            background-color: #9c1009;
             color: white;
         }
 
         #chatButton {
-            background-color: #FFA500;
+            background-color: #891919;
             color: white;
         }
 
@@ -150,6 +152,20 @@
 
         .editor-buttons button {
             margin-left: 10px;
+        }
+
+        /* 新增样式 */
+        #submitButton {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            background-color: #af4c4c;
+            color: white;
         }
     </style>
 </head>
@@ -181,6 +197,7 @@
         <button id="chatButton">Chat with TA</button>
     </div>
 
+    
     <div id="taskDescription">
         <h2>Majority Element II</h2>
         <p>
@@ -208,36 +225,19 @@
         </ul>
     </div>
 
-    <div id="codeEditor">
-        <h2>Code Editor</h2>
-        <textarea placeholder="Please tap your answer..."></textarea>
-        <select>
-            <option value="c">C</option>
-            <option value="cpp">C++</option>
-            <option value="java">Java</option>
-            <!-- 可以根据需要添加其他语言 -->
-        </select>
-        <<div class="editor-buttons">
-            <button>Run Tests</button>
-            <button onclick="submitAnswer()">Submit Answer</button>
-        </div>
-    </div>
+    <iframe src="https://trinket.io/embed/python/28e4aeb82c" width="100%" height="500" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
+
+    <!-- 新增Submit按钮 -->
+    <button id="submitButton">Submit</button>
 
     <script>
-        // 获取 "My account" 按钮元素
         const accountButton = document.getElementById('accountButton');
-
-        // 添加点击事件处理程序，以在按钮点击时执行页面跳转
         accountButton.addEventListener('click', function() {
-            // 在这里设置要跳转的页面的 URL
             window.location.href = "file.html";
         });
 
         const chatButton = document.getElementById('chatButton');
-
-        // 添加点击事件处理程序，以在按钮点击时执行页面跳转
         chatButton.addEventListener('click', function() {
-            // 在这里设置要跳转的页面的 URL
             window.location.href = "techsuppor.html";
         });
 
@@ -250,14 +250,14 @@
             }
         }
 
-        function submitAnswer() {
-        // 弹出确认提交的提示框
-        var userChoice = confirm("Are you sure you want to submit?");
-        if (userChoice) {
-            // 如果用户确认提交，就会自动跳转到 file.html 页面
-            window.location.href = 'file.html'; // 修改为实际的路径
-        }
-    }
+        // 新增Submit按钮的点击事件处理
+        const submitButton = document.getElementById('submitButton');
+        submitButton.addEventListener('click', function() {
+            const isConfirmed = confirm('Are you sure you want to submit?');
+            if (isConfirmed) {
+                window.location.href = "file.html"; // 修改为主界面的URL
+            }
+        });
     </script>
 
 </body>
